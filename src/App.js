@@ -232,7 +232,7 @@ export function App(props) {
         </Toolbar>
       </AppBar>
       <Drawer open={drawer_open} onClose={handleCloseDrawer}>
-        I'm a drawer
+        Te Amo
       </Drawer>
     </div>
   );
