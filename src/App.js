@@ -7,9 +7,17 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import Drawer from "@material-ui/core/Drawer";
 import { Link } from "react-router-dom";
 import { auth } from "./firebase";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
 
 export function SignIn(props) {
   const [email, setEmail] = useState("");
@@ -208,6 +216,26 @@ export function App(props) {
     return <div />;
   }
 
+  const sideList = side => (
+    <div>
+      <List>
+        {["Te Amo"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+              {
+                <IconButton>
+                  <FavoriteIcon />
+                </IconButton>
+              }
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+    </div>
+  );
+
   return (
     <div>
       <AppBar position="static">
@@ -232,7 +260,7 @@ export function App(props) {
         </Toolbar>
       </AppBar>
       <Drawer open={drawer_open} onClose={handleCloseDrawer}>
-        Te Amo
+        {sideList("left")}
       </Drawer>
     </div>
   );
